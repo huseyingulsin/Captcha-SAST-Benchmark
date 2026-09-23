@@ -1,0 +1,6 @@
+{
+  "findings": [
+    {"file":"src/routes/scenarios/01_missing_server_check.ts","ruleId":"example-rule","message":"Missing server-side CAPTCHA enforcement"},
+    {"file":"src/routes/scenarios/03_fail_open.ts","ruleId":"example-rule","message":"Verification exception fails open"}
+  ]
+}

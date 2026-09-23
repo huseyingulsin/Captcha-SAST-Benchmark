@@ -1,0 +1,33 @@
+{
+  "benchmark": "captcha-sast-benchmark",
+  "version": "0.1.0",
+  "scope": "synthetic localhost-only application",
+  "findings": [
+    {"id":"CAPTCHA-001","file":"src/routes/scenarios/01_missing_server_check.ts","title":"Missing server-side CAPTCHA enforcement","class":"missing-control","cwe":["CWE-602","CWE-841"],"severity":"high"},
+    {"id":"CAPTCHA-002","file":"src/routes/scenarios/02_optional_token.ts","title":"CAPTCHA validation only when token is supplied","class":"fail-open-branch","cwe":["CWE-754","CWE-841"],"severity":"high"},
+    {"id":"CAPTCHA-003","file":"src/routes/scenarios/03_fail_open.ts","title":"Provider exception causes fail-open","class":"exception-control-flow","cwe":["CWE-755","CWE-841"],"severity":"high"},
+    {"id":"CAPTCHA-004","file":"src/routes/scenarios/04_http_status_only.ts","title":"HTTP status accepted without semantic success check","class":"response-validation","cwe":["CWE-754"],"severity":"high"},
+    {"id":"CAPTCHA-005","file":"src/routes/scenarios/05_score_ignored.ts","title":"Risk score ignored","class":"incomplete-validation","cwe":["CWE-754"],"severity":"medium"},
+    {"id":"CAPTCHA-006","file":"src/routes/scenarios/06_action_ignored.ts","title":"CAPTCHA action not bound to operation","class":"context-binding","cwe":["CWE-345","CWE-841"],"severity":"medium"},
+    {"id":"CAPTCHA-007","file":"src/routes/scenarios/07_hostname_ignored.ts","title":"CAPTCHA origin/hostname not validated","class":"context-binding","cwe":["CWE-346"],"severity":"medium"},
+    {"id":"CAPTCHA-008","file":"src/routes/scenarios/08_token_replay.ts","title":"CAPTCHA token can be replayed","class":"replay","cwe":["CWE-294"],"severity":"high"},
+    {"id":"CAPTCHA-009","file":"src/routes/scenarios/09_check_then_use_race.ts","title":"Non-atomic replay check permits race","class":"race-condition","cwe":["CWE-367"],"severity":"high"},
+    {"id":"CAPTCHA-010","file":"src/routes/scenarios/10_client_verified_flag.ts","title":"Server trusts client-supplied verification flag","class":"client-trust","cwe":["CWE-602"],"severity":"high"},
+    {"id":"CAPTCHA-011","file":"src/routes/scenarios/11_debug_bypass.ts","title":"User-controlled debug switch bypasses CAPTCHA","class":"debug-bypass","cwe":["CWE-489"],"severity":"high"},
+    {"id":"CAPTCHA-012","file":"src/routes/scenarios/12_hardcoded_bypass.ts","title":"Hard-coded CAPTCHA bypass token","class":"backdoor-test-hook","cwe":["CWE-798","CWE-912"],"severity":"high"},
+    {"id":"CAPTCHA-013","file":"src/routes/scenarios/13_feature_flag_default_off.ts","title":"Protection defaults off on missing configuration","class":"unsafe-default","cwe":["CWE-1188"],"severity":"high"},
+    {"id":"CAPTCHA-014","file":"src/routes/scenarios/14_user_selected_provider.ts","title":"Client controls CAPTCHA provider and unknown provider fails open","class":"client-controlled-policy","cwe":["CWE-602","CWE-841"],"severity":"high"},
+    {"id":"CAPTCHA-015","file":"src/routes/scenarios/15_truthy_type_confusion.ts","title":"Truthy string can satisfy success check","class":"type-confusion","cwe":["CWE-704"],"severity":"medium"},
+    {"id":"CAPTCHA-016","file":"src/routes/scenarios/16_missing_await.ts","title":"Async verification promise is not awaited","class":"async-control-flow","cwe":["CWE-754"],"severity":"high"},
+    {"id":"CAPTCHA-017","file":"src/routes/scenarios/17_callback_result_ignored.ts","title":"Asynchronous callback result is ignored","class":"async-control-flow","cwe":["CWE-754"],"severity":"high"},
+    {"id":"CAPTCHA-018","file":"src/routes/scenarios/18_alternate_endpoint.ts","title":"Alternate endpoint reaches protected operation without CAPTCHA","class":"endpoint-coverage","cwe":["CWE-841"],"severity":"high"},
+    {"id":"CAPTCHA-019","file":"src/routes/scenarios/19_resend_gap.ts","title":"Password-reset resend endpoint lacks CAPTCHA","class":"workflow-coverage","cwe":["CWE-841","CWE-799"],"severity":"high"},
+    {"id":"CAPTCHA-020","file":"src/routes/scenarios/20_proxy_header_trust.ts","title":"Untrusted forwarded IP header bypasses CAPTCHA policy","class":"proxy-trust","cwe":["CWE-441","CWE-345"],"severity":"high"},
+    {"id":"CAPTCHA-021","file":"src/routes/scenarios/21_client_state_cookie.ts","title":"Client-controlled attempt counter governs CAPTCHA requirement","class":"client-state","cwe":["CWE-602","CWE-307"],"severity":"high"},
+    {"id":"CAPTCHA-022","file":"src/routes/scenarios/22_identity_normalization_gap.ts","title":"CAPTCHA attempt tracking uses non-canonical identity","class":"canonicalization","cwe":["CWE-180","CWE-307"],"severity":"medium"},
+    {"id":"CAPTCHA-023","file":"src/routes/scenarios/23_method_gap.ts","title":"Equivalent HTTP method lacks CAPTCHA enforcement","class":"method-coverage","cwe":["CWE-841"],"severity":"high"},
+    {"id":"CAPTCHA-024","file":"src/routes/scenarios/24_mobile_api_bypass.ts","title":"Mobile API path bypasses web CAPTCHA policy","class":"channel-coverage","cwe":["CWE-841"],"severity":"high"},
+    {"id":"CAPTCHA-025","file":"src/routes/scenarios/25_expiry_ignored.ts","title":"CAPTCHA challenge age is not validated","class":"freshness","cwe":["CWE-613"],"severity":"medium"},
+    {"id":"CAPTCHA-026","file":"src/routes/scenarios/26_otp_resend_gap.ts","title":"OTP resend workflow lacks CAPTCHA enforcement","class":"workflow-coverage","cwe":["CWE-841","CWE-799"],"severity":"high"}
+  ]
+}
